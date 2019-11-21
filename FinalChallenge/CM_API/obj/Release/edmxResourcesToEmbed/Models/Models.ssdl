@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalChallengeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustNo" />
+    </Key>
+    <Property Name="CustNo" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostCode" Type="int" />
+    <Property Name="InterestCode" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Interest">
+    <Key>
+      <PropertyRef Name="InterestCode" />
+    </Key>
+    <Property Name="InterestCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Record">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" />
+    <Property Name="Performer" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="CustNo" />
+      <PropertyRef Name="RecordId" />
+      <PropertyRef Name="DateOrdered" />
+    </Key>
+    <Property Name="CustNo" Type="int" Nullable="false" />
+    <Property Name="RecordId" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DateOrdered" Type="date" Nullable="false" />
+    <Property Name="Price" Type="money" />
+  </EntityType>
+  <Association Name="FK__Customer__Intere__4F7CD00D">
+    <End Role="Interest" Type="Self.Interest" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestCode" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="InterestCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__CustNo__5070F446">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustNo" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="CustNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__RecordId__5165187F">
+    <End Role="Record" Type="Self.Record" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Record">
+        <PropertyRef Name="RecordId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="RecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinalChallengeModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Customer__Intere__4F7CD00D" Association="Self.FK__Customer__Intere__4F7CD00D">
+      <End Role="Interest" EntitySet="Interest" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__CustNo__5070F446" Association="Self.FK__Sale__CustNo__5070F446">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__RecordId__5165187F" Association="Self.FK__Sale__RecordId__5165187F">
+      <End Role="Record" EntitySet="Record" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinalChallengeModelStoreContainer" CdmEntityContainer="FinalChallengeEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="FinalChallengeModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustNo" ColumnName="CustNo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Interests">
+      <EntityTypeMapping TypeName="FinalChallengeModel.Interest">
+        <MappingFragment StoreEntitySet="Interest">
+          <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="FinalChallengeModel.Record">
+        <MappingFragment StoreEntitySet="Record">
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Performer" ColumnName="Performer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="FinalChallengeModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="CustNo" ColumnName="CustNo" />
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

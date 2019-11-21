@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FinalChallengeEntities-Web.config Connection String" description="FinalChallengeEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Models.csdl|res://*/Models.Models.ssdl|res://*/Models.Models.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=102690319.database.windows.net;initial catalog=FinalChallenge;persist security info=True;user id=zalispurgeon;password=Mrs5p!derman;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Zali\\Documents\\Cert\ IV\ in\ IT\\GitHub\\DB_FinalChallenge\\FinalChallenge\\CM_API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FinalChallengeEntities']/@connectionString" />
+  </parameter>
+</parameters>
